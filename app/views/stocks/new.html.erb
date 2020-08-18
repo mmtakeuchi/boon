@@ -16,5 +16,12 @@
   <%= f.label :shares %>
   <%= f.text_field :shares %><br>
 
+  <%= f.label "Categories" %>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br>
+  <%= f.fields_for :categories, @stock.categories.build do |categories_fields| %>
+    <%= categories_fields.text_field :name %>
+    <%= categories_fields.label "New Category" %>
+  <% end %><br>
+
   <%= f.submit "Create Stock" %>
 <% end %>

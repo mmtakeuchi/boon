@@ -7,3 +7,5 @@
     <p>Market Value: <%= number_to_currency(@stock.price * @stock.shares) %></p>
     <p>Return: <%= number_to_currency((@stock.price * @stock.shares) - (@stock.cost * @stock.shares))%></p>
 </div>
+
+<%= link_to "Edit Stock", edit_stock_path %>

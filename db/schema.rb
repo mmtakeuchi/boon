@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_173733) do
+ActiveRecord::Schema.define(version: 2020_08_18_224627) do
 
-  create_table "notes", force: :cascade do |t|
-    t.string "title"
-    t.string "content"
-    t.integer "user_id"
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stock_categories", force: :cascade do |t|
     t.integer "stock_id"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -27,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_173733) do
     t.decimal "price"
     t.decimal "cost"
     t.decimal "shares"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,5 +1,5 @@
 class StocksController < ApplicationController
-    before_action :authenticate_user!
+    before_action :current_user
     before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -12,7 +12,9 @@ class StocksController < ApplicationController
 
     def create
         @stock = current_user.stocks.build(stock_params)
+       
         if @stock.save
+            
             redirect_to stock_path(@stock)
         else
             render :new
@@ -45,6 +47,6 @@ class StocksController < ApplicationController
     end
 
     def stock_params
-        params.require(:stock).permit(:name, :ticker, :price, :cost, :shares)
+        params.require(:stock).permit(:name, :ticker, :price, :cost, :shares, category_ids:[], categories_attributes:[:name])
     end
 end

@@ -6,6 +6,7 @@ class CreateStocks < ActiveRecord::Migration[6.0]
       t.decimal :price
       t.decimal :cost
       t.decimal :shares
+      t.integer :user_id
 
       t.timestamps
     end

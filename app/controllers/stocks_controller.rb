@@ -1,6 +1,6 @@
 class StocksController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_stock, only: [:show, :edit, :update]
+    before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
     def index
         @stocks = Stock.all
@@ -31,6 +31,11 @@ class StocksController < ApplicationController
         else
             render :edit
         end
+    end
+
+    def destroy
+        @stock.destroy
+        redirect_to stocks_path
     end
 
     private

@@ -12,10 +12,14 @@ class StocksController < ApplicationController
     def create
         @stock = current_user.stocks.build(stock_params)
         if @stock.save
-            redirect_to stocks_path
+            redirect_to stock_path(@stock)
         else
             render :new
         end
+    end
+
+    def show
+        @stock = Stock.find_by_id(params[:id])
     end
 
     private

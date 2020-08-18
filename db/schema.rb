@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_173733) do
   end
 
   create_table "stocks", force: :cascade do |t|
+    t.string "name"
     t.string "ticker"
     t.decimal "price"
     t.decimal "cost"

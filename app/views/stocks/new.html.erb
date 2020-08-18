@@ -1,0 +1,20 @@
+<h2>Add Stock</h2>
+
+<%= form_with model: @stock do |f|%>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :ticker %>
+  <%= f.text_field :ticker %><br>
+
+  <%= f.label :price %>
+  <%= f.text_field :price %><br>
+
+  <%= f.label :cost %>
+  <%= f.text_field :cost %><br>
+
+  <%= f.label :shares %>
+  <%= f.text_field :shares %><br>
+
+  <%= f.submit "Create Stock" %>
+<% end %>

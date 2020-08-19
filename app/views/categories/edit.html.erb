@@ -1,0 +1,10 @@
+<h2>Update Category</h2>
+
+<%= flash[:error] if flash[:error] %>
+
+<%= form_with model: @category do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+
+    <%= f.submit "Update Category"%>
+<% end %>

@@ -3,7 +3,7 @@ class StocksController < ApplicationController
     before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
     def index
-        @stocks = Stock.all
+        @stocks = current_user.stocks
     end
 
     def new

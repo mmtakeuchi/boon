@@ -3,12 +3,12 @@
 
 <div>
     <% @stocks.each do |stock| %>
-        <p>Name: <%= stock.name %></p>
-        <p>Ticker: (<%= stock.ticker %>)</p> 
+        <p>Name: <%= link_to stock.name, stock_path(stock) %> (<%= stock.ticker %>)</p>
         <p>Price: <%= number_to_currency(stock.price) %></p>
         <p>Cost: <%= number_to_currency(stock.cost) %></p>
         <p>Shares: <%= stock.shares %></p>
         <p>Market Value: <%= number_to_currency(stock.price * stock.shares) %></p>
         <p>Return: <%= number_to_currency((stock.price * stock.shares) - (stock.cost * stock.shares))%></p>
+        <p>Categories: <%= stock.categories.map { |category| category.name }.join(", ") %></p>
     <% end %>
 </div>

@@ -5,7 +5,8 @@ class Stock < ApplicationRecord
 
     accepts_nested_attributes_for :categories
 
-    scope :sorted_date, -> {self.order(action_date: :asc)}
+    scope :profit, -> { where("(price - cost) > ?", 0) }
+    scope :sorted_profit, -> {self.profit.order(action_date: :asc)}
 
     def categories_attribtues=(category_attributes)
         category_attributes.values.each do |category_attributes|

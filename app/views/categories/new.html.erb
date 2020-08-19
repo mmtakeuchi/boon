@@ -1,9 +1,15 @@
 <h2>Create Category</h2>
-<%= flash[:error] if flash[:error] %>
 
-<%= form_with model: @category do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
 
-    <%= f.submit "Create Category"%>
+
+<%= render partial: "categories/form", locals: {category: @category, button_name: "Create Category"}%>
+
+<% if @category.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @category.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
 <% end %>

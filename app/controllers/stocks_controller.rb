@@ -3,7 +3,7 @@ class StocksController < ApplicationController
     before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
     def index
-        @stocks = current_user.stocks.sorted_date
+        @stocks = current_user.stocks
     end
 
     def new
@@ -12,9 +12,9 @@ class StocksController < ApplicationController
 
     def create
         @stock = current_user.stocks.build(stock_params)
-       
+        
         if @stock.save
-            redirect_to stock_path(@stock)
+            redirect_to stocks_path
         else
             render :new
         end

@@ -3,7 +3,7 @@ class StocksController < ApplicationController
     before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
     def index
-        @stocks = current_user.stocks
+        @stocks = current_user.stocks.sorted_date
     end
 
     def new
@@ -47,6 +47,6 @@ class StocksController < ApplicationController
     end
 
     def stock_params
-        params.require(:stock).permit(:name, :ticker, :price, :cost, :shares, category_ids:[], categories_attributes:[:name])
+        params.require(:stock).permit(:action_date, :name, :ticker, :price, :cost, :shares, category_ids:[], categories_attributes:[:name])
     end
 end

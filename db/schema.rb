@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_224627) do
   end
 
   create_table "stocks", force: :cascade do |t|
+    t.date "action_date"
     t.string "name"
     t.string "ticker"
     t.decimal "price"

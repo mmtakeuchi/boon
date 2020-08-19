@@ -3,6 +3,7 @@
 
 <div>
     <% @stocks.each do |stock| %>
+        <p>Added on: <%= stock.action_date %></p>
         <p>Name: <%= link_to stock.name, stock_path(stock) %> (<%= stock.ticker %>)</p>
         <p>Price: <%= number_to_currency(stock.price) %></p>
         <p>Cost: <%= number_to_currency(stock.cost) %></p>

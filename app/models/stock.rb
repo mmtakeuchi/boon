@@ -5,10 +5,12 @@ class Stock < ApplicationRecord
 
     accepts_nested_attributes_for :categories
 
+    scope :sorted_date, -> {self.order(action_date: :asc)}
+
     def categories_attribtues=(category_attributes)
         category_attributes.values.each do |category_attributes|
             category = Category.find_or_create_by(category_attributes)
-            self.categories << category
+            self.categories << category unless category.name.nil?
         end
     end
 end

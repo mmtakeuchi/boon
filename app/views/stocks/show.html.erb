@@ -1,15 +1,13 @@
 <h2><%= @stock.name %> (<%= @stock.ticker %>)</h2>
 
 <div>
+    <p><%= @stock.action_date %></p>
     <p>Price: <%= number_to_currency(@stock.price) %></p>
     <p>Cost: <%= number_to_currency(@stock.cost) %></p>
     <p>Shares: <%= @stock.shares %></p>
     <p>Market Value: <%= number_to_currency(@stock.price * @stock.shares) %></p>
     <p>Return: <%= number_to_currency((@stock.price * @stock.shares) - (@stock.cost * @stock.shares))%></p>
-    <p>Categories: <% @stock.categories.each do |category| %>
-                        <%= category.name %>
-                    <% end %>
-    </p>
+    <p>Categories: <%= @stock.categories.map { |category| category.name }.join(", ") %></p>
 </div>
 
 <%= link_to "Edit Stock", edit_stock_path %><br>

@@ -1,5 +1,5 @@
 <h1>Stocks</h1>
-<%= link_to "Create Stock", new_stock_path %>
+<%= link_to "Create Stock", new_user_stock_path(@current_user) %>
 
 <div>
     <% @stocks.each do |stock| %>

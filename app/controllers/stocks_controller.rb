@@ -15,7 +15,7 @@ class StocksController < ApplicationController
         @stock = current_user.stocks.build(stock_params)
         
         if @stock.save
-            redirect_to stocks_path
+            redirect_to user_stocks_path(current_user)
         else
             render :new
         end

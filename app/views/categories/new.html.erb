@@ -1,15 +1,3 @@
 <h2>Create Category</h2>
 
-
-
 <%= render partial: "categories/form", locals: {category: @category, button_name: "Create Category"}%>
-
-<% if @category.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-    <% @category.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>

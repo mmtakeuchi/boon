@@ -2,10 +2,9 @@
 
 <ul>
     <% @category.stocks.each do |stock| %>
-        <li><%= link_to stock.name, category_stock_path(@category, stock) %></li>
+        <li><%= link_to stock.name, stock_path(stock) %></li>
     <% end %>
 </ul>
 
-<%= link_to "Edit Category", edit_category_path %><br
->
+<%= link_to "Edit Category", edit_category_path %><br>
 <%= link_to "Delete Category", category_path, method: 'delete' %>

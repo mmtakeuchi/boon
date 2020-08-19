@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 2020_08_18_224627) do
     t.decimal "price"
     t.decimal "cost"
     t.decimal "shares"
-    t.decimal "market_value"
-    t.decimal "stock_return"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

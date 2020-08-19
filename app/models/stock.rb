@@ -7,11 +7,14 @@ class Stock < ApplicationRecord
 
     scope :profit, -> { where("(price - cost) > ?", 0) }
     scope :sorted_profit, -> {self.profit.order(action_date: :asc)}
+    scope :sorted_date, -> {self.order(action_date: :asc)}
 
-    def categories_attribtues=(category_attributes)
-        category_attributes.values.each do |category_attributes|
-            category = Category.find_or_create_by(category_attributes)
-            self.categories << category unless category.name.nil?
+    def categories_attributes=(category_attributes)
+        category_attributes.values.each do |category_attribute|
+        if category_attribute[:name].present?
+            category = Category.find_or_create_by(category_attribute)
+            self.categories << category
         end
     end
+  end
 end

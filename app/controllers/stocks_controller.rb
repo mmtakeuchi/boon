@@ -7,7 +7,10 @@ class StocksController < ApplicationController
     def index
         if params[:term]
             @stocks = Stock.search(params[:term])
+        elsif params[:stock] && params[:stock][:category_id]
+            @stocks = Stock.filtered(params[:stock][:category_id].to_i)
         else
+            
             @stocks = current_user.stocks.sorted_date
         end
     end

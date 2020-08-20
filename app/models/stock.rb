@@ -15,6 +15,10 @@ class Stock < ApplicationRecord
         where("LOWER(name) LIKE :term OR LOWER(ticker) LIKE :term", term: "%#{params}%")
     end
 
+    def self.filtered(params)
+        left_joins(:categories).where("category_id = ?", params)
+    end
+
     def market_value
         self.price * self.shares
     end

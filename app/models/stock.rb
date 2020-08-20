@@ -3,6 +3,8 @@ class Stock < ApplicationRecord
     has_many :categories, through: :stock_categories
     belongs_to :user
 
+    validates :price, :cost, :shares, presence: true
+
     accepts_nested_attributes_for :categories
 
     scope :profit, -> { where("(price - cost) > ?", 0) }

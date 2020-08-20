@@ -5,16 +5,36 @@
   <%= submit_tag "Search"%>
 <% end %>
 
-<%= form_tag(stocks_path, method: 'get') do %>
-  <%= label_tag :category_id, "Select Category" %>
-  <%= collection_select :stock, :category_id, Category.all, :id, :name %>
-  <%= submit_tag "Filter"%>
-<% end %>
+<div class="input-field col s12">
+  <select>
+    <option value="">Choose Category</option>
+    <option><%= collection_select :stock, :category_id, Category.all, :id, :name %><%= collection_select :stock, :category_id, Category.all, :id, :name %></option>
+  </select>
+  <label>Filter Category</label>
+</div>
+
+<div class="input-field col s12">
+    <select>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+    </select>
+    <label>Materialize Select</label>
+  </div>
+
+
+
+<%# <%= form_tag(stocks_path, method: 'get') do %>
+      <%# <%= label_tag :category_id, "Select Category" %> 
+      <%# <%= collection_select :stock, :category_id, Category.all, :id, :name %> 
+      <%# <%= submit_tag "Filter"%>
+    <%# <% end %>
 
 
 
 
-<div class="container">
+<div class="center-align">
     <% @stocks.each do |stock| %>
         <p>Added on: <%= stock.action_date %></p>
         <p>Name: <%= link_to stock.name, stock_path(stock) %> (<%= stock.ticker %>)</p>

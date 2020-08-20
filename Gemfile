@@ -26,6 +26,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'devise'
 
+gem 'iex-ruby-client'
+
 gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons' 
 

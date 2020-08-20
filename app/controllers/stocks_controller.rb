@@ -1,8 +1,9 @@
 class StocksController < ApplicationController
     before_action :authenticate_user!
     before_action :current_user
-    # before_action :redirect_unless_correct_user
     before_action :set_stock, only: [:show, :edit, :update, :destroy]
+    # before_action :redirect_unless_correct_user, except: [:index, :new]
+    
 
     def index
         if params[:term]
@@ -10,7 +11,6 @@ class StocksController < ApplicationController
         elsif params[:stock] && params[:stock][:category_id]
             @stocks = Stock.filtered(params[:stock][:category_id].to_i)
         else
-            
             @stocks = current_user.stocks.sorted_date
         end
     end
@@ -30,6 +30,7 @@ class StocksController < ApplicationController
     end
 
     def show
+        
     end
 
     def edit
@@ -52,7 +53,7 @@ class StocksController < ApplicationController
     private
 
     # def redirect_unless_correct_user
-    #     redirect_to root_path if current_user != User.find(session[:user_id]) 
+    #   redirect_to root_path if @stock.user != current_user
     # end
 
     def set_stock
@@ -63,7 +64,3 @@ class StocksController < ApplicationController
         params.require(:stock).permit(:action_date, :name, :ticker, :price, :cost, :shares, category_ids:[], categories_attributes:[:name])
     end
 end
-
-# Parameters: {"authenticity_token"=>"UcWc7cuXnqNJp+FeJrlU8Jg9fngtVT2FEVPgpVdg5m0dVabMqLaD4+T+2oJSDW/SsrcZXpcmC8TirtVLEAABJg==", 
-# "stock"=>{"action_date"=>"2020-08-03", "name"=>"Apple", "ticker"=>"AAPL", "price"=>"429", "cost"=>"450", "shares"=>"5", "category_ids"=>["", "1"], 
-# "categories_attributes"=>{"0"=>{"name"=>""}}}, "commit"=>"Create Stock"}

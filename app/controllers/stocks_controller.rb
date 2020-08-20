@@ -52,7 +52,7 @@ class StocksController < ApplicationController
     private
 
     # def redirect_unless_correct_user
-    #     redirect_to root_path if current_user[:id] != params[:user_id].to_i
+    #     redirect_to root_path if current_user != User.find(session[:user_id]) 
     # end
 
     def set_stock

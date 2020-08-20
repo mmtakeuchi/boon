@@ -10,20 +10,22 @@
   </head>
 
   <body>
-    <nav>
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
+    <nav class="navbar">
+      <ul class="nav nav-pills">
+        <li class="navitem" ><%= link_to "Home", root_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "Stocks", user_stocks_path(current_user) %></li>
-          <li><%= link_to "Create Stock", new_user_stock_path(current_user) %></li>
-          <li><%= link_to "Categories", categories_path %></li>
-          <li><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
+          <li class="navitem" ><%= link_to "Stocks", user_stocks_path(current_user) %></li>
+          <li class="navitem" ><%= link_to "Create Stock", new_user_stock_path(current_user) %></li>
+          <li class="navitem" ><%= link_to "Categories", categories_path %></li>
+          <li class="navitem" ><%= link_to "Logout", destroy_user_session_path, method: 'delete' %></li>
         <% else %>
-          <li><%= link_to "Login", new_user_session_path %></li>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li class="navitem" ><%= link_to "Login", new_user_session_path %></li>
+          <li class="navitem" ><%= link_to "Sign up", new_user_registration_path %></li>
         <% end %>
       </ul>
     </nav>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

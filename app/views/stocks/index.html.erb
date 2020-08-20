@@ -1,5 +1,10 @@
 <h1>Stocks</h1>
-<%= link_to "Create Stock", new_user_stock_path(@current_user) %>
+
+<%= form_tag(stocks_path, method: 'get') do %>
+  <%= text_field_tag :term, nil,  id: "Search", placeholder: "Search Companies" %>
+
+  <%= submit_tag "Search"%>
+<% end %>
 
 <div>
     <% @stocks.each do |stock| %>
@@ -13,3 +18,5 @@
         <p>Categories: <%= stock.categories.map { |category| category.name }.join(", ") %></p>
     <% end %>
 </div>
+
+<%= link_to "Add Stock", new_user_stock_path(@current_user) %>

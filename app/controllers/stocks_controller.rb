@@ -5,7 +5,11 @@ class StocksController < ApplicationController
     before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
     def index
-        @stocks = current_user.stocks.sorted_date
+        if params[:term]
+            @stocks = Stock.search(params[:term])
+        else
+            @stocks = current_user.stocks.sorted_date
+        end
     end
 
     def new

@@ -11,6 +11,9 @@ class Stock < ApplicationRecord
     scope :sorted_profit, -> {self.profit.order(action_date: :asc)}
     scope :sorted_date, -> {self.order(action_date: :asc)}
 
+    def self.search(params)
+        where("LOWER(name) LIKE :term OR LOWER(ticker) LIKE :term", term: "%#{params}%")
+    end
 
     def market_value
         self.price * self.shares

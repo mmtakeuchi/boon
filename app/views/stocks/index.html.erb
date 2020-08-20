@@ -8,8 +8,8 @@
         <p>Price: <%= number_to_currency(stock.price) %></p>
         <p>Cost: <%= number_to_currency(stock.cost) %></p>
         <p>Shares: <%= stock.shares %></p>
-        <p>Market Value: <%= number_to_currency(stock.price * stock.shares) %></p>
-        <p>Return: <%= number_to_currency((stock.price * stock.shares) - (stock.cost * stock.shares))%></p>
+        <p>Market Value: <%= number_to_currency(stock.market_value) %></p>
+        <p>Return: <%= number_to_currency(stock.stock_return)%></p>
         <p>Categories: <%= stock.categories.map { |category| category.name }.join(", ") %></p>
     <% end %>
 </div>

@@ -1,5 +1,7 @@
 class StocksController < ApplicationController
+    before_action :authenticate_user!
     before_action :current_user
+    # before_action :redirect_unless_correct_user
     before_action :set_stock, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -11,7 +13,6 @@ class StocksController < ApplicationController
     end
 
     def create
-         
         @stock = current_user.stocks.build(stock_params)
         
         if @stock.save
@@ -42,6 +43,10 @@ class StocksController < ApplicationController
     end
 
     private
+
+    # def redirect_unless_correct_user
+    #     redirect_to root_path if current_user[:id] != params[:user_id].to_i
+    # end
 
     def set_stock
         @stock = Stock.find_by_id(params[:id])

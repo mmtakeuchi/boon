@@ -11,6 +11,15 @@ class Stock < ApplicationRecord
     scope :sorted_profit, -> {self.profit.order(action_date: :asc)}
     scope :sorted_date, -> {self.order(action_date: :asc)}
 
+
+    def market_value
+        self.price * self.shares
+    end
+
+    def stock_return
+        (self.price * self.shares) - (self.cost - self.shares)
+    end
+
     def categories_attributes=(category_attributes)
         category_attributes.values.each do |category_attribute|
         if category_attribute[:name].present?

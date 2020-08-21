@@ -1,28 +1,17 @@
-<h1>Stocks</h1>
+<h1 class="center-align">Stocks</h1>
 
 <%= form_tag(stocks_path, method: 'get') do %>
   <%= text_field_tag :term, nil,  id: "Search", placeholder: "Search Companies" %>
-  <%= submit_tag "Search"%>
+  <%= submit_tag "Search", class:"waves-effect waves-light btn white black-text hoverable"%>
 <% end %>
 
-<div class="input-field col s12">
-  <select>
-    <option value="">Choose Category</option>
-    <option><%= collection_select :stock, :category_id, Category.all, :id, :name %><%= collection_select :stock, :category_id, Category.all, :id, :name %></option>
-  </select>
-  <label>Filter Category</label>
-</div>
-
-<div class="input-field col s12">
-    <select>
-      <option value="" disabled selected>Choose your option</option>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
-    </select>
-    <label>Materialize Select</label>
-  </div>
-
+<%# <div class="input-field col s12"> %>
+  <%# <select> %>
+    <%# <option value="">Choose Category</option> %>
+    <%# <#option><%= collection_select :stock, :category_id, Category.all, :id, :name %><%#= collection_select :stock, :category_id, Category.all, :id, :name %></option>
+  <%# </select> %>
+  <%# <label>Filter Category</label> %>
+<%# </div> %>
 
 
 <%# <%= form_tag(stocks_path, method: 'get') do %>
@@ -32,20 +21,32 @@
     <%# <% end %>
 
 
+<table class="highlight">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Cost</th>
+      <th>Shares</th>
+      <th>Market Value</th>
+      <th>Return</th>
+    </tr>
+  </thead>
 
-
-<div class="center-align">
+  <tbody>
     <% @stocks.each do |stock| %>
-        <p>Added on: <%= stock.action_date %></p>
-        <p>Name: <%= link_to stock.name, stock_path(stock) %> (<%= stock.ticker %>)</p>
-        <p>Price: <%= number_to_currency(stock.price) %></p>
-        <p>Cost: <%= number_to_currency(stock.cost) %></p>
-        <p>Shares: <%= stock.shares %></p>
-        <p>Market Value: <%= number_to_currency(stock.market_value) %></p>
-        <p>Return: <%= number_to_currency(stock.stock_return)%></p>
-        <p>Categories: <%= stock.categories.map { |category| category.name }.join(", ") %></p>
-    <% end %>
-</div>
+      <tr>
+          <td><%= stock.action_date %></td>
+          <td><%= link_to stock.name, stock_path(stock) %> (<%= stock.ticker %>)</td>
+          <td><%= number_to_currency(stock.price) %></td>
+          <td><%= number_to_currency(stock.cost) %></td>
+          <td><%= stock.shares %></td>
+          <td><%= number_to_currency(stock.market_value) %></td>
+          <td><%= number_to_currency(stock.stock_return)%></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table><br>
 
-<%= link_to "Add Stock", new_user_stock_path(@current_user) %>
-
+<%= link_to "Add Stock", new_user_stock_path(@current_user), class:"waves-effect waves-light btn blue darken-2 white-text hoverable" %>

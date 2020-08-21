@@ -1,5 +1,5 @@
 //= require jquery
-//= require materialize
+//= require materialize-sprockets
 
 document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('select');

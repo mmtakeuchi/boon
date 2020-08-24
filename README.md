@@ -1,24 +1,29 @@
-# README
+# Boon
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Boon is a Stock Tracker. The app gives a user the ability to add stocks to their portfolio by including all the transaction information, such as (name, price, cost, shares, ...). As the user continuously adds to their portfolio, their total market value and return will update.
 
-Things you may want to cover:
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+Fork and clone the repository.
 
-* Configuration
+Run `bundle install` to get the necessary gems.
 
-* Database creation
+Run `rails s` in the root directory to start your server.
 
-* Database initialization
+Open up your browser and enter and go to`http://localhost:3000/`.
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributing
 
-* Deployment instructions
+Bug reports and pull requests are welcome on GitHub at https://github.com/mmtakeuchi/boon. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/mmtakeuchi/boon/blob/master/CODE_OF_CONDUCT.md).
 
-* ...
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Code of Conduct
+
+Everyone interacting in the Boon project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/mmtakeuchi/boon/blob/master/CODE_OF_CONDUCT.md).
+

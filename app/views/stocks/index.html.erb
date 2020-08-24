@@ -5,14 +5,12 @@
   <%= submit_tag "Search", class:"waves-effect waves-light btn white black-text hoverable"%>
 <% end %>
 
-<%# <div class="input-field col s12"> %>
-  <%# <select> %>
-    <%# <option value="">Choose Category</option> %>
-    <%# <#option><%= collection_select :stock, :category_id, Category.all, :id, :name %><%#= collection_select :stock, :category_id, Category.all, :id, :name %></option>
+<%# <div class="input-field col s12">
+  <select>
+    <option><%= collection_select :stock, :category_id, Category.all, :id, :name %></option>
   <%# </select> %>
   <%# <label>Filter Category</label> %>
 <%# </div> %>
-
 
 <%# <%= form_tag(stocks_path, method: 'get') do %>
       <%# <%= label_tag :category_id, "Select Category" %> 
@@ -31,6 +29,7 @@
       <th>Shares</th>
       <th>Market Value</th>
       <th>Return</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -47,6 +46,14 @@
         </tr>
       <% end %>
   </tbody>
+
+  <tfoot>
+    <tr>
+      <th colspan="5">Total</th>
+      <td><%= number_to_currency(@stocks.map {|stock| stock.market_value}.sum) %></td>
+      <td><%= number_to_currency(@stocks.map {|stock| stock.stock_return}.sum) %></td>
+    </tr>
+  </tfoot>
 </table><br>
 
 <%= link_to "Add Stock", new_user_stock_path(@current_user), class:"waves-effect waves-light btn blue darken-2 white-text hoverable" %>

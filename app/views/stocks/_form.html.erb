@@ -1,3 +1,6 @@
+<div>
+
+</div>
 <%= form_for stock do |f|%>
 
     <%= f.label :action_date %>
@@ -31,5 +34,5 @@
         <%= categories_fields.label "New Category" %>
     <% end %><br><br>
 
-    <%= f.submit button_name %>
+    <p><%= f.submit button_name, class:"waves-effect waves-light btn blue darken-2 white-text hoverable center" %></p>
 <% end %>

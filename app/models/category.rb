@@ -13,4 +13,6 @@ class Category < ApplicationRecord
     def capitalize_name
       self.name = name.capitalize
     end
+
+    
 end

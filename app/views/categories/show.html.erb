@@ -1,10 +1,11 @@
 <h2><%= @category.name %></h2>
 
-<div class="collection">
-    <% @category.stocks.each do |stock| %>
-        <%= link_to stock.name, stock_path(stock), class:"collection-item" %>
+<ul class="collection">
+    <% @result.each do |name| %>
+        <li class="collection-item"><%= name %></li>
     <% end %>
-</div>
+</ul>
+
 
 <%= link_to "Edit Category", edit_category_path, class:"left btn blue darken-2" %><br><br>
 <%= link_to "Delete Category", category_path, method: 'delete', class:"btn red darken-2" %>

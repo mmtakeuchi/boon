@@ -3,7 +3,7 @@ class Stock < ApplicationRecord
     has_many :categories, through: :stock_categories
     belongs_to :user
 
-    validates :price, :cost, :shares, presence: true
+    validates :action_date, :name, :price, :cost, :shares, presence: true
 
     accepts_nested_attributes_for :categories
 
@@ -24,7 +24,7 @@ class Stock < ApplicationRecord
     end
 
     def stock_return
-        (self.price * self.shares) - (self.cost - self.shares)
+        ((self.price * self.shares) - (self.cost * self.shares))
     end
 
     def categories_attributes=(category_attributes)

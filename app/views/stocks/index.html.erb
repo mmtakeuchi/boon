@@ -41,8 +41,8 @@
           <td><%= number_to_currency(stock.price) %></td>
           <td><%= number_to_currency(stock.cost) %></td>
           <td><%= stock.shares %></td>
-          <td><%= number_to_currency(stock.market_value) %></td>
-          <td><%= number_to_currency(stock.stock_return)%></td>
+          <td><%= number_to_currency(market_value(stock)) %></td>
+          <td><%= number_to_currency(stock_return(stock))%></td>
         </tr>
       <% end %>
   </tbody>
@@ -50,8 +50,8 @@
   <tfoot>
     <tr>
       <th colspan="5">Total</th>
-      <td><%= number_to_currency(@stocks.map {|stock| stock.market_value}.sum) %></td>
-      <td><%= number_to_currency(@stocks.map {|stock| stock.stock_return}.sum) %></td>
+      <td><%= number_to_currency(@stocks.map {|stock| market_value(stock)}.sum) %></td>
+      <td><%= number_to_currency(@stocks.map {|stock| stock_return(stock)}.sum) %></td>
     </tr>
   </tfoot>
 </table><br>

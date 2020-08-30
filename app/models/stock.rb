@@ -19,13 +19,13 @@ class Stock < ApplicationRecord
         left_joins(:categories).where("category_id = ?", params)
     end
 
-    def market_value
-        self.price * self.shares
-    end
+    # def market_value
+    #     self.price * self.shares
+    # end
 
-    def stock_return
-        ((self.price * self.shares) - (self.cost * self.shares))
-    end
+    # def stock_return
+    #     ((self.price * self.shares) - (self.cost * self.shares))
+    # end
 
     def categories_attributes=(category_attributes)
         category_attributes.values.each do |category_attribute|

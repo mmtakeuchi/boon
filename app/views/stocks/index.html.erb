@@ -31,9 +31,9 @@
 
   <tbody>
     <% @stocks.each do |stock| %>
-      <tr>
-          <td><%= stock.action_date %></td>
-          <td><%= link_to stock.name, user_stock_path(stock.user, stock) %> (<%= stock.ticker %>)</td>
+      <tr class="<%= color(stock_return(stock)) %>">
+          <td class="black-text"><%= stock.action_date %></td>
+          <td class="black-text"><%= link_to stock.name, user_stock_path(stock.user, stock) %> (<%= stock.ticker %>)</td>
           <td><%= number_to_currency(stock.price) %></td>
           <td><%= number_to_currency(stock.cost) %></td>
           <td><%= stock.shares %></td>
@@ -45,9 +45,10 @@
 
   <tfoot>
     <tr>
+    
       <th colspan="5">Total</th>
-      <td><%= number_to_currency(@stocks.map {|stock| market_value(stock)}.sum) %></td>
-      <td><%= number_to_currency(@stocks.map {|stock| stock_return(stock)}.sum) %></td>
+      <td class="<%= color(@stocks.map {|stock| market_value(stock)}.sum) %>"><%= number_to_currency(@stocks.map {|stock| market_value(stock)}.sum) %></td>
+      <td class="<%= color(@stocks.map {|stock| stock_return(stock)}.sum) %>"><%= number_to_currency(@stocks.map {|stock| stock_return(stock)}.sum) %></td>
     </tr>
   </tfoot>
 </table><br>

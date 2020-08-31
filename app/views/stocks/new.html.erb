@@ -1,4 +1,6 @@
 <h2>Add Stock</h2>
 
+<%= form_for @stock do |f|%>
 <%= render partial: "layouts/errors", locals: {object: @stock} %>
-<%= render partial: "stocks/form", locals: {stock: @stock, button_name: "Create Stock"} %>
+<%= render partial: "stocks/form", locals: {stock: @stock, category: @category, f: f, button_name: "Create Stock"} %>
+<% end %>

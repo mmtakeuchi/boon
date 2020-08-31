@@ -1,4 +1,4 @@
-<%= form_for stock do |f|%>
+
 
     <%= f.label :action_date %>
     <%= f.date_field :action_date %><br>
@@ -16,20 +16,40 @@
     <%= f.text_field :cost %><br>
 
     <%= f.label :shares %>
-    <%= f.text_field :shares %><br>
-
-        
-    <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
-        <label>
-            <%= b.check_box %>
-            <span><%= b.label %></span><br>
-        </label>
-    <% end %>
+    <%= f.text_field :shares %><br>    
     
-    <%= f.fields_for :categories, stock.categories.build do |categories_fields| %>
-        <%= categories_fields.text_field :name %>
-        <%= categories_fields.label "New Category" %>
-    <% end %><br><br>
+    <div>
+    <% if category.present? %>
+
+        <%#= hidden_field_tag "stock[category_ids][]", nil %>
+            <% Category.all.each do |category| %>
+        <label>
+            <% if (@category.id == category.id) %>
+                <%= check_box_tag "stock[category_ids][]", category.id, {checked: true}%>
+            <% else %>
+                <%= check_box_tag "stock[category_ids][]", category.id %>
+            <% end %>
+            <span><%= label_tag :category_id, category.name %></span><br>
+        </label>
+        <% end %>
+    </div>
+    
+    <% else %>
+
+        <div>
+            <%= hidden_field_tag "stock[category_ids][]", nil %>
+                <% Category.all.each do |category| %>
+                <label>
+                    <%= check_box_tag "stock[category_ids][]", category.id, @stock.categories.include?(category)%>
+                    <span><%= label_tag :category_id, category.name %></span><br>
+                </label>
+            <% end %>
+        </div>
+        
+        <%= f.fields_for :categories, stock.categories.build do |categories_fields| %>
+            <%= categories_fields.text_field :name %>
+            <%= categories_fields.label "New Category" %>
+        <% end %><br><br>
+    <% end %>
 
     <p><%= f.submit button_name, class:"waves-effect waves-light btn blue darken-2 white-text hoverable center" %></p>
-<% end %>

@@ -6,7 +6,7 @@ class Stock < ApplicationRecord
     validates :action_date, :name, :price, :cost, :shares, presence: true
     validates :shares, :cost, :price, numericality: true
 
-    accepts_nested_attributes_for :categories
+    # accepts_nested_attributes_for :categories
 
     scope :profit, -> { where("(price - cost) > ?", 0) }
     scope :sorted_profit, -> {self.profit.order(action_date: :asc)}

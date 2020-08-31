@@ -18,14 +18,16 @@ class StocksController < ApplicationController
     end
 
     def new
+        @category = Category.find_by_id(params[:category_id])
         @stock = Stock.new
+        
     end
 
     def create
         @stock = current_user.stocks.build(stock_params)
         
         if @stock.save
-            redirect_to user_stocks_path(current_user)
+            redirect_to stocks_path
         else
             render :new
         end
@@ -39,8 +41,9 @@ class StocksController < ApplicationController
     end
 
     def update
+        
         if @stock.update(stock_params)
-            redirect_to user_stock_path(@stock.user, @stock)
+            redirect_to stock_path(@stock)
         else
             
             render :edit

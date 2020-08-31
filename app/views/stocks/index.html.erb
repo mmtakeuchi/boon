@@ -33,7 +33,7 @@
     <% @stocks.each do |stock| %>
       <tr class="<%= color(stock_return(stock)) %>">
           <td class="black-text"><%= stock.action_date %></td>
-          <td class="black-text"><%= link_to stock.name, user_stock_path(stock.user, stock) %> (<%= stock.ticker %>)</td>
+          <td class="black-text"><%= link_to stock.name, stock_path(stock) %> (<%= stock.ticker %>)</td>
           <td><%= number_to_currency(stock.price) %></td>
           <td><%= number_to_currency(stock.cost) %></td>
           <td><%= stock.shares %></td>
@@ -53,4 +53,4 @@
   </tfoot>
 </table><br>
 
-<%= link_to "Add Stock", new_user_stock_path(@current_user), class:"waves-effect waves-light btn blue darken-2 white-text hoverable" %>
+<%= link_to "Add Stock", new_stock_path, class:"waves-effect waves-light btn blue darken-2 white-text hoverable" %>

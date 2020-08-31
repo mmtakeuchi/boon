@@ -1,3 +1,7 @@
 <h2>Update Stock</h2>
 
-<%= render partial: "stocks/form", locals: {stock: @stock, button_name: "Update Stock"} %>
+<%= form_for @stock do |f|%>
+    
+<%= render partial: "stocks/form", locals: {stock: @stock, category: @category, f: f, button_name: "Update Stock"} %>
+
+<% end %>

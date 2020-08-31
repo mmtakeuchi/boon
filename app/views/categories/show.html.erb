@@ -1,5 +1,7 @@
 <h2><%= @category.name %></h2>
 
+<%= link_to "Create Stock", new_category_stock_path(@category), class:"btn blue darken-2" %><br><br>
+
 <ul class="collection">
     <% @result.each do |name| %>
         <li class="collection-item"><%= name %></li>

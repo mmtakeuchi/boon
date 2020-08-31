@@ -5,9 +5,9 @@
     <p class="col s12"><strong><%= @stock.action_date %></strong></p>
     <p class="col s12"><strong>Price: <%= number_to_currency(@stock.price) %></strong></p>
     <p class="col s3"><strong>Shares: <%= @stock.shares %></strong></p>
-    <p class="col s9"><strong>Market Value: <%= number_to_currency(market_value(@stock)) %></strong></p>
+    <p class="col s9 <%= color(stock_return(@stock))%>"><strong>Market Value: <%= number_to_currency(market_value(@stock)) %></strong></p>
     <p class="col s3"><strong>Cost: <%= number_to_currency(@stock.cost) %></strong></p>
-    <p class="col s9"><strong>Return: <%= number_to_currency(stock_return(@stock))%></strong></p>
+    <p class="col s9 <%= color(stock_return(@stock))%>"><strong>Return: <%= number_to_currency(stock_return(@stock))%></strong></p>
     <p class="col s12"><strong>Categories: <%= @stock_categories %></strong></p>
 </div>
 

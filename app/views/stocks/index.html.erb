@@ -47,7 +47,7 @@
     <tr>
     
       <th colspan="5">Total</th>
-      <td class="<%= color(@stocks.map {|stock| market_value(stock)}.sum) %>"><%= number_to_currency(@stocks.map {|stock| market_value(stock)}.sum) %></td>
+      <td class="<%= color(@stocks.map {|stock| stock_return(stock)}.sum) %>"><%= number_to_currency(@stocks.map {|stock| market_value(stock)}.sum) %></td>
       <td class="<%= color(@stocks.map {|stock| stock_return(stock)}.sum) %>"><%= number_to_currency(@stocks.map {|stock| stock_return(stock)}.sum) %></td>
     </tr>
   </tfoot>

@@ -12,4 +12,4 @@
 </div>
 
 <%= link_to "Edit Stock", edit_stock_path %><br>
-<%= link_to "Delete Stock", stock_path(@stock), method: "delete" %>
+<%= link_to "Delete Stock", stock_path(@stock), method: "delete", data: { confirm: "Delete?" } %>

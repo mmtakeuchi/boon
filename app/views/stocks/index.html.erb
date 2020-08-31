@@ -5,18 +5,14 @@
   <%= submit_tag "Search", class:"waves-effect waves-light btn white black-text hoverable"%>
 <% end %>
 
-<%# <div class="input-field col s12">
-  <select>
-    <option><%= collection_select :stock, :category_id, Category.all, :id, :name %></option>
-  <%# </select> %>
-  <%# <label>Filter Category</label> %>
-<%# </div> %>
+<div class="input-field col s12">
+  <%#= form_tag(stocks_path, method: 'get') do %>
+      <%#= label_tag :category_id, "Select Category" %>
+      <%#= collection_select :stock, :category_id, Category.all, :id, :name %>
+      <%#= submit_tag "Filter" %>
+  <%# end %>
+</div>
 
-<%# <%= form_tag(stocks_path, method: 'get') do %>
-      <%# <%= label_tag :category_id, "Select Category" %> 
-      <%# <%= collection_select :stock, :category_id, Category.all, :id, :name %> 
-      <%# <%= submit_tag "Filter"%>
-    <%# <% end %>
 
 
 <table class="highlight">
@@ -37,7 +33,7 @@
     <% @stocks.each do |stock| %>
       <tr>
           <td><%= stock.action_date %></td>
-          <td><%= link_to stock.name, stock_path(stock) %> (<%= stock.ticker %>)</td>
+          <td><%= link_to stock.name, user_stock_path(stock.user, stock) %> (<%= stock.ticker %>)</td>
           <td><%= number_to_currency(stock.price) %></td>
           <td><%= number_to_currency(stock.cost) %></td>
           <td><%= stock.shares %></td>

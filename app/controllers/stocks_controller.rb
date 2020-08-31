@@ -40,7 +40,7 @@ class StocksController < ApplicationController
 
     def update
         if @stock.update(stock_params)
-            redirect_to stock_path(@stock)
+            redirect_to user_stock_path(@stock.user, @stock)
         else
             
             render :edit
